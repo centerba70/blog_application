@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgres
+    environment:
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_USER=fra
+      - POSTGRES_DB=service
+    container_name: postgres_db
+    restart: always
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: fra
+      RABBITMQ_DEFAULT_PASS: test
+    configs:
+      - source: rabbitmq-plugins
+        target: /etc/rabbitmq/enabled_plugins
+    volumes:
+      - rabbitmq-lib:/var/lib/rabbitmq/
+      - rabbitmq-log:/var/log/rabbitmq
+configs:
+  rabbitmq-plugins:
+    content: "[rabbitmq_management]."
+volumes:
+  data:
+    driver: local
+  rabbitmq-lib:
+    driver: local
+  rabbitmq-log:
+    driver: local
