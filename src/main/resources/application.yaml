@@ -4,7 +4,7 @@ spring:
   application:
     name: 2026-demo
   datasource:
-    url: jdbc:postgresql://localhost:5432/service
+    url: jdbc:postgresql://db:5432/service
     username: fra
     password: test
     driver-class-name: org.postgresql.Driver
@@ -17,7 +17,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
 rabbitmq:
-  hostname: localhost
+  hostname: rabbitmq
   port: 5672
   queueName: queue_test
   username: fra

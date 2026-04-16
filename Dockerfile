@@ -1,5 +1,5 @@
-FROM openjdk:25
+FROM eclipse-temurin:26
 ARG JAR_FILE=build/libs/*.jar
-COPY ${JAR_FILE} invoice_scanner.jar
-ENTRYPOINT ["java","-jar","/invoice_scanner.jar"]
+COPY ${JAR_FILE} blog_application.jar
+ENTRYPOINT ["java","-jar","/blog_application.jar"]
 EXPOSE 8080

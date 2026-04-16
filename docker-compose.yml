@@ -27,6 +27,22 @@ services:
     volumes:
       - rabbitmq-lib:/var/lib/rabbitmq/
       - rabbitmq-log:/var/log/rabbitmq
+    healthcheck:
+      test: [ "CMD", "rabbitmqctl", "status" ]
+      interval: 5s
+      timeout: 20s
+      retries: 5
+
+  backend1:
+    image: blog_application:latest
+    restart: on-failure
+    depends_on:
+        - rabbitmq
+    links:
+      - db
+      - rabbitmq
+
+  #backend2:
 configs:
   rabbitmq-plugins:
     content: "[rabbitmq_management]."

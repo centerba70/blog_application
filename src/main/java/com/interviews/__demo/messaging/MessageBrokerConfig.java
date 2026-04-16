@@ -40,6 +40,8 @@ public class MessageBrokerConfig {
         CachingConnectionFactory factory = new CachingConnectionFactory();
         factory.setUsername(username);
         factory.setPassword(password);
+        factory.setHost(hostname);
+        factory.setPort(port);
         return factory;
     }
 
