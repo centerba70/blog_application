@@ -6,10 +6,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import jakarta.validation.Valid;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@RestController
+import java.util.List;
+
+@Controller
 public class BlogController implements WebMvcConfigurer {
 
     Logger logger = LoggerFactory.getLogger(BlogController.class);
@@ -20,9 +24,17 @@ public class BlogController implements WebMvcConfigurer {
         this.blogService = blogService;
     }
 
+
+    @GetMapping("/")
+    public String index(Model model) {
+        model.addAttribute("name", "Francesco");
+        return "index";
+    }
+
     @GetMapping("/welcome")
-    ResponseEntity<String> welcome() {
-        return ResponseEntity.ok().body("Welcome to this service!");
+    public ResponseEntity<String> welcome(Model model) {
+        model.addAttribute("message", "Welcome to the Full-Stack Application!");
+        return ResponseEntity.ok("welcome!!");
     }
 
     @PostMapping("/user/{username}")
@@ -50,6 +62,12 @@ public class BlogController implements WebMvcConfigurer {
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.status(403).body(String.format("The given post %s could not be added. ", blogPostDto));
+    }
+
+    @GetMapping("/posts")
+    ResponseEntity<List<BlogPostDto>> getAll() {
+        logger.info("Get all posts");
+        return ResponseEntity.ok(blogService.getAll());
     }
 
 

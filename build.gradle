@@ -19,15 +19,19 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
-	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+	implementation('org.webjars:bootstrap:5.3.8')
+	implementation('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect')
 	implementation 'org.postgresql:postgresql:42.7.7'
 	implementation"org.mongodb:mongodb-driver:3.12.14"
 	implementation("jakarta.validation:jakarta.validation-api:4.0.0-M1")
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
-	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testCompileOnly 'org.projectlombok:lombok'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	testAnnotationProcessor 'org.projectlombok:lombok'

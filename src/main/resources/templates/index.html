@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog app</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/script.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body onload="showAllPosts()">
+    <h1>Blog Application</h1>
+    <tr th:text="${name} ?: ${name}"> </tr>
+    <p th:text="${message}"></p>
+    <a href="#create_new_post">Create new Post</a>
+    <div class="js" id="create_new_post">
+        <form class="js" id="create_new_post_form" action="javascript:sendPost()">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+
+            <label for="title">Post Title:</label><br>
+            <input type="text" id="title" name="title">
+
+            <label for="postContent">Content:</label><br>
+            <input type="text" id="postContent" name="postContent">
+            <input type="submit" value="Create Post">
+        </form>
+    </div>
+    <div class="container" id="posts-container">
+        <!-- Show all posts -->
+    </div>
+</body>
+</html>

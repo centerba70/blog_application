@@ -42,6 +42,16 @@ services:
       - db
       - rabbitmq
 
+  memcached:
+    image: memcached:alpine3.23
+    command:
+      - --conn-limit=1024
+      - --memory-limit=64
+      - --threads=4
+  nginx:
+    image: nginx:stable-alpine3.23-perl
+
+
   #backend2:
 configs:
   rabbitmq-plugins:

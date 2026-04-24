@@ -59,6 +59,11 @@ public class BlogService {
         return true;
     }
 
+    public List<BlogPostDto> getAll() {
+        List<BlogPost> blogPosts = blogPostRepository.findAll();
+        return blogPosts.stream().map(bp -> new BlogPostDto(bp.getTitle(), bp.getTextContent(), bp.getBlogUser().getUsername())).toList();
+    }
+
     public boolean addPost(BlogPostDto blogPostDto) {
         BlogPost blogPost = new BlogPost();
         blogPost.setBlogUser(findUserByUsername(blogPostDto.username()));
