@@ -26,8 +26,15 @@
             <input type="submit" value="Create Post">
         </form>
     </div>
+    <input [value]="searchTerm()" (input)="searchTerm.set($event.target.value)" />
+    <ul>
+        @for (item of filteredItems(); track $index) {
+        <li>{{ item }}</li>
+        }
+    </ul>
     <div class="container" id="posts-container">
         <!-- Show all posts -->
     </div>
 </body>
 </html>
+<!-- Use another CSS Template from here: https://www.tooplate.com/free-templates -->

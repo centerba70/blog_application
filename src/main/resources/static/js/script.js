@@ -4,14 +4,16 @@ function PostDTO(username, title, text) {
     this.text = text;
 }
 
+const getAllUrl = "http://localhost:8081/posts"
+const postUrl = "http://localhost:8081/post"
+
 async function sendPost() {
     let username = document.getElementById("username").value;
     let title = document.getElementById("title").value;
     let text = document.getElementById("postContent").value;
     let postDTO = new PostDTO(username, title, text);
-    let url = "http://localhost:8081/post";
 
-    const response = await fetch(url, {
+    const response = await fetch(postUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -21,8 +23,7 @@ async function sendPost() {
 }
 
 function showAllPosts() {
-    let url = "http://localhost:8081/posts"
-    fetch(url).then(function (response){
+    fetch(getAllUrl).then(function (response){
         response.json().then(function (data) {
             console.log(data);
             return data;
