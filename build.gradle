@@ -37,6 +37,10 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok'
 }
 
-tasks.named('test') {
+tasks.named('test', Test) {
 	useJUnitPlatform()
+
+	testLogging {
+		events "passed"
+	}
 }
