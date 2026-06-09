@@ -62,9 +62,9 @@ tasks.named('test', Test) {
 	finalizedBy jacocoTestReport // report is always generated after tests run
 }
 
-sonar {
+/*sonar {
 	properties {
 		property "sonar.projectKey", "myProjectKey"
 		property "sonar.organization", "myOrganization"
 	}
-}
+} */
