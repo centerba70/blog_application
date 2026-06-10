@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 
 @Controller
 public class BlogController implements WebMvcConfigurer {
@@ -28,9 +27,6 @@ public class BlogController implements WebMvcConfigurer {
 
     @GetMapping("/")
     public String index(Model model) {
-        if (model == null) {
-            model.addAttribute("", "");
-        }
         model.addAttribute("name", "Francesco");
         return "index";
     }
