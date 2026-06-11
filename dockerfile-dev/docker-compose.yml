@@ -37,7 +37,7 @@ services:
 
   backend1:
     # in the build section you can give the path to a docker file, which will be used to create the service
-    build: .
+    build: ..
     image: blog_application:latest
     restart: on-failure
     hostname: host-backend1
